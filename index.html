@@ -112,16 +112,6 @@
     </div>
 </div>
 
-<div id="shutdown-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center z-[2000] p-4 hidden">
-    <div class="bg-slate-900 border border-slate-800 max-w-md w-full p-8 rounded-[2rem] text-center shadow-2xl">
-        <h2 class="font-black text-2xl text-red-500 tracking-tighter uppercase mb-4">📢 Shutdown Notice</h2>
-        <p class="text-sm text-slate-300 leading-relaxed mb-6">
-            HTML Chat is scheduled to fully close down on <strong>August 27, 2026</strong>. Over the next month, you can browse, use the new features, download your source backups, or play with the free AI model before all information is securely wiped. Thank you for an amazing journey!
-        </p>
-        <button onclick="document.getElementById('shutdown-modal').remove()" class="w-full bg-indigo-600 py-3 rounded-xl font-black text-xs text-white uppercase tracking-wider shadow-lg hover:bg-indigo-500 transition">Acknowledge</button>
-    </div>
-</div>
-
 <div id="login-screen" class="fixed inset-0 bg-slate-950 flex items-center justify-center z-[1000]">
     <div class="bg-slate-900 p-12 rounded-[2.5rem] border border-slate-800 w-full max-w-[400px] text-center shadow-2xl">
         <h2 class="font-black text-4xl mb-10 text-indigo-500 tracking-tighter uppercase">HTML CHAT</h2>
@@ -130,13 +120,14 @@
         <button id="btn-login" class="w-full bg-indigo-600 py-5 rounded-2xl font-black text-base text-white uppercase tracking-widest shadow-lg shadow-indigo-500/20 hover:bg-indigo-500 transition">Login / Register</button>
     </div>
 </div>
-
+    
 <script>
+    <!-- Replace this with your Firebase Config -->
     const config = {
-        apiKey: "AIzaSyAfuvvQFw5lpk_UxjoquPAgRPM-6aRbWlQ",
-        authDomain: "htmlchat-html.firebaseapp.com",
-        projectId: "htmlchat-html",
-        databaseURL: "https://htmlchat-html-default-rtdb.firebaseio.com"
+        apiKey: "....",
+        authDomain: "....",
+        projectId: "....",
+        databaseURL: "...."
     };
 
     firebase.initializeApp(config);
@@ -182,11 +173,6 @@
         });
 
         return filteredWords.join(" ");
-    }
-
-    if (!sessionStorage.getItem('shutdown_warned')) {
-        document.getElementById('shutdown-modal').classList.remove('hidden');
-        sessionStorage.setItem('shutdown_warned', 'true');
     }
 
     db.ref('api_keys').on('value', snap => {
